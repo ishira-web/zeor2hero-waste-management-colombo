@@ -1,6 +1,7 @@
 import mongoose, { mongo } from "mongoose";
 
 const UserSchema  = mongoose.Schema({
+  dwellerID :   { type: String, required: true, unique: true, default : function(){return `#USER${Math.floor(1000 + Math.random() * 9000)}`}},
   fullName:     { type: String, required: true },
   email:        { type: String, required: true, unique: true },
   phoneNumber:  { type: String, required: true },
@@ -18,3 +19,4 @@ const UserSchema  = mongoose.Schema({
 
 const User =  mongoose.model("Users",UserSchema);
 export default User;
+
