@@ -6,8 +6,11 @@ const  timeTableSchema = mongoose.Schema({
     collectionDay: { type: String, required: true },
     collectionTime: { type: String, required: true },
     collectionLocation: { type: String, required: true },
+    routeName : {type: mongoose.Schema.Types.ObjectId, ref: 'Routes', required: true },
     crewMembers: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Collectors' }],
     isActive: { type: Boolean, default: true }
-}, { timestamps: true });
+},{ timestamps: true });
+
+
 const TimeTable = mongoose.model("TimeTable", timeTableSchema);
 export default TimeTable;
