@@ -1,4 +1,4 @@
-import mongoose, { mongo } from "mongoose";
+import mongoose from "mongoose";
 
 const UserSchema  = mongoose.Schema({
   dwellerID :   { type: String, required: true, unique: true, default : function(){return `#USER${Math.floor(1000 + Math.random() * 9000)}`}},
