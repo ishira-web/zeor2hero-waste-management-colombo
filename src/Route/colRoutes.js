@@ -1,5 +1,5 @@
 import express from 'express';
-import { createRoute, deleteRouteById, getAllRoutes, getRouteById, updateRouteById } from '../Controller/route.controller';
+import { createRoute, deleteRouteById, getAllRoutes, getRouteById, updateRouteById } from '../Controller/route.controller.js';
 
 const colRoutes = express.Router();
 
@@ -8,3 +8,6 @@ colRoutes.get('/getAllRoutes', getAllRoutes);
 colRoutes.get('/getRouteById/:id', getRouteById);
 colRoutes.put('/updateRouteById/:id', updateRouteById);
 colRoutes.delete('/deleteRouteById/:id', deleteRouteById);
+
+
+export default colRoutes;
