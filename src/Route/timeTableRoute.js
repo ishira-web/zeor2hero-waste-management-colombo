@@ -5,7 +5,7 @@ export const timeRoute = express.Router();
 
 timeRoute.post('/create',createTimeTable);
 timeRoute.get('/all', getAllTimeTables);
-timeRoute.get('/:id', getTimeTableById);
+timeRoute.get('/timetable/:id', getTimeTableById);
 timeRoute.put('/:id', updateTimeTableById);
 timeRoute.get('/gettimetable',getActiveTimeTables);
 
