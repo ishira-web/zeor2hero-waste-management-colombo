@@ -7,6 +7,7 @@ import adminRouter from './Route/adminRoutes.js';
 import router from './Route/collectorRoutes.js';
 import { userRouter } from './Route/userRoutes.js';
 import colRoutes from './Route/colRoutes.js';
+import { timeRoute } from './Route/timeTableRoute.js';
 dotenv.config();
 
 
@@ -24,6 +25,8 @@ app.use('/api/admin', adminRouter);
 app.use('/api/collector',router);
 app.use('/api/route',colRoutes);
 app.use('/api/user',userRouter);
+app.use('/api/timetable', timeRoute);
+
 
 app.listen(port, () => {
   connectDB();
