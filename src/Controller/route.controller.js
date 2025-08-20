@@ -1,4 +1,4 @@
-import router from "../Route/collectorRoutes.js";
+import Route from "../Model/route.model.js";
 
 // Create new route
 export const createRoute = async (req, res) => {
