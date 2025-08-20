@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 const UserSchema  = mongoose.Schema({
-  dwellerID :   { type: String, required: true, unique: true, default : function(){return `#USER${Math.floor(1000 + Math.random() * 9000)}`}},
+  dwellerId :   { type: String, required: true, unique: true, default : function(){return `#USER${Math.floor(1000 + Math.random() * 9000)}`}},
   fullName:     { type: String, required: true },
   email:        { type: String, required: true, unique: true },
   phoneNumber:  { type: String, required: true },
@@ -12,7 +12,7 @@ const UserSchema  = mongoose.Schema({
   city:         { type: String, default: 'Colombo' },
   aTaxNumber:   { type: String, required: true },
   postalCode:   { type: String, required: true },
-  profilePicture: {type: String },
+  profilePicture: {type: String  },
   isActive:     { type: String, default: 'inActive' },
 }
 , { timestamps: true });
