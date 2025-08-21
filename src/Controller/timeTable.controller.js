@@ -120,3 +120,18 @@ export const getActiveTimeTables = async (req, res) => {
         return res.status(500).json({ message: "Internal server error" });
     }
 };
+
+
+// Get All Crew Members in Team
+
+export const getAllCrewMembers = async (req, res) => {
+    try {
+        const { timeTableId } = req.params;
+        const timeTable = await TimeTable.findById(timeTableId).populate('crewMembers', 'fullName');
+        if (!timeTable) return res.status(404).json({ message: "Time table not found" });
+        return res.status(200).json({ message: "Crew members retrieved successfully", crewMembers: timeTable.crewMembers });
+    } catch (error) {
+        console.error("Error retrieving crew members:", error);
+        return res.status(500).json({ message: "Internal server error" });
+    }
+}

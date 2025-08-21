@@ -6,7 +6,8 @@ const router = express.Router();
 
 router.post('/createcollector',upload.fields([{ name: "nicImage", maxCount: 1 },{ name: "profilePicture", maxCount: 1 },]),protect(["admin"]), createCollector)
 router.get('/getcollectors',getAllCollectors);
-router.get('/getcollector/:id',protect(["admin","collector"]),getCollectorById); 
+router.get('/getcollector/:id',protect(["collector"]),getCollectorById); 
 router.delete('/deletecollector/:id',protect(["admin"]),deleteCollectorById);
 router.put('/updatecollector/:id',protect(["admin"]),updateCollectorById);
 export default router;
+
