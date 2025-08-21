@@ -8,6 +8,7 @@ import router from './Route/collectorRoutes.js';
 import { userRouter } from './Route/userRoutes.js';
 import colRoutes from './Route/colRoutes.js';
 import { timeRoute } from './Route/timeTableRoute.js';
+import Rerouter from './Route/reques.rotues.js';
 dotenv.config();
 
 
@@ -26,6 +27,7 @@ app.use('/api/collector',router);
 app.use('/api/route',colRoutes);
 app.use('/api/user',userRouter);
 app.use('/api/timetable', timeRoute);
+app.use('/api/requests',Rerouter);
 
 
 app.listen(port, () => {
