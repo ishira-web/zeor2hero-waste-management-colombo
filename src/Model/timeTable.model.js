@@ -2,12 +2,12 @@ import mongoose from "mongoose";
 
 const  timeTableSchema = mongoose.Schema({
     timeTableID: { type: String, required: true, unique: true, default: function() { return `#TT${Math.floor(1000 + Math.random() * 9000)}` } },
-    collectorID: { type: mongoose.Schema.Types.ObjectId, ref: 'Collectors', required: true },
+    collectorID: { type: String, required: true },
     collectionDay: { type: String, required: true },
     collectionTime: { type: String, required: true },
     collectionLocation: { type: String, required: true },
-    routeName : {type: mongoose.Schema.Types.ObjectId, ref: 'Routes', required: true },
-    crewMembers: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Collectors' }],
+    routeName : {type: String, required: true },
+    crewMembers: [{ type: String, required: true }],
     isActive: { type: Boolean, default: true }
 },{ timestamps: true });
 
