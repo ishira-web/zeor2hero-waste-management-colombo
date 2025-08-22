@@ -1,5 +1,5 @@
 import express from 'express';
-import { createUser, deleteUserById, getAllUsers, getUserById, updateUserById } from '../Controller/user.controller.js';
+import { activateUserById, createUser, deleteUserById, getAllUsers, getUserById, updateUserById } from '../Controller/user.controller.js';
 import { protect } from '../Middleware/authMiddleware.js';
 import upload from '../Config/Multer.js';
 
@@ -10,4 +10,4 @@ userRouter.get('/all',protect(["admin"]), getAllUsers);
 userRouter.get('/:id',getUserById);
 userRouter.put('/update/:id',updateUserById);
 userRouter.delete('/delete/:id', deleteUserById); 
-
+userRouter.put('/activate/:id', protect(["admin"]), activateUserById);

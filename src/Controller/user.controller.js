@@ -191,3 +191,20 @@ export const deleteUserById = async (req, res) => {
 }
 
 
+// Activate account by user ID
+
+export const activateUserById = async (req, res) => {
+    const { id } = req.params;
+    try {
+        const user = await User.findById(id);
+        if (!user) { 
+            return res.status(404).json({ message: "User not found" });
+        } 
+        user.isActive = 'active'; // Set the isActive field to 'active'
+        await user.save(); // Save the updated user document
+        return res.status(200).json({ message: "User activated successfully", user });
+    } catch (error) {
+        console.error("Error activating user:", error); 
+        return res.status(500).json({ message: "Internal server error" });
+    }
+}
