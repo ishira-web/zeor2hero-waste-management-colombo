@@ -17,5 +17,5 @@ const collectorSchema = mongoose.Schema({
     isActive :    { type: String, default: 'Active' },
 });
 
-const Collectors =  mongoose.model("Collectors", collectorSchema);
+const Collectors =  mongoose.model("Collector", collectorSchema);
 export default Collectors;

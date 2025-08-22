@@ -7,7 +7,7 @@ const  timeTableSchema = mongoose.Schema({
     collectionTime: { type: String, required: true },
     collectionLocation: { type: String, required: true },
     routeName : {type: String, required: true },
-    crewMembers: [{ type: String, required: true }],
+    crewMembers: [{ type: mongoose.Schema.Types.ObjectId, ref: "Collector", required: true }],
     isActive: { type: Boolean, default: true }
 },{ timestamps: true });
 

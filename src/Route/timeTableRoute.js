@@ -9,6 +9,6 @@ timeRoute.get('/all', getAllTimeTables);
 timeRoute.get('/timetable/:id', getTimeTableById);
 timeRoute.put('/:id', updateTimeTableById);
 timeRoute.get('/gettimetable',getActiveTimeTables);
-timeRoute.get('/getCrewMembers/:id', getAllCrewMembers);
-timeRoute.get('/getTimetablebyCollector/:id',protect(["collector"]), getTimeTablesByCollectorId)
+timeRoute.get('/getCrewMembers/:id',protect(["collector"]),getAllCrewMembers);
+timeRoute.get('/getTimetablebyCollector/:id',protect(["collector"]),getTimeTablesByCollectorId)
 
