@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const requestSchema = mongoose.Schema({
     requestID: { type: String, required: true, unique: true, default: function() { return `#REQ${Math.floor(1000 + Math.random() * 9000)}` } },
-    collectorID: { type: String, required: true },
+    collectorID: { type: mongoose.Schema.Types.ObjectId, ref: "Collector", required: true },
     userName: { type: String, required: true },
     dwellerID: { type: String, required: true },
     dwellerAddress: { type: String, required: true },
