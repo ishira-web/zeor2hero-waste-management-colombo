@@ -1,5 +1,5 @@
 import TimeTable from "../Model/timeTable.model.js";
-
+import mongoose from "mongoose";
 // Create new time table entry
 export const createTimeTable = async (req, res) => {
     const { collectorID, collectionDay, collectionTime, collectionLocation } = req.body;
@@ -85,16 +85,29 @@ export const deleteTimeTableById = async (req, res) => {
 
 // Get time tables by collector ID
 export const getTimeTablesByCollectorId = async (req, res) => {
-    const { collectorId } = req.params;
-    try {
-        const timeTables = await TimeTable.find({ collectorID: collectorId }).populate('collectorID', 'fullName').populate('routeName', 'routeName');
-        if (timeTables.length === 0) return res.status(404).json({ message: "No time tables found for this collector" });
-        return res.status(200).json({ message: "Time tables retrieved successfully", timeTables });
-    } catch (error) {
-        console.error("Error retrieving time tables by collector ID:", error);
-        return res.status(500).json({ message: "Internal server error" });
+  try {
+    const { id } = req.params;
+
+    // Optional: only if your IDs are ObjectId-like; safe to keep
+    if (!mongoose.isValidObjectId(id)) {
+      return res.status(400).json({ message: 'Invalid collector ID' });
     }
+
+    const timeTables = await TimeTable
+      .find({ collectorID: id }) // no populate since collectorID is String in your schema
+      .sort({ collectionDay: 1, collectionTime: 1 });
+
+    if (!timeTables.length) {
+      return res.status(404).json({ message: 'No time tables found for this collector' });
+    }
+
+    return res.status(200).json({ message: 'Time tables retrieved successfully', timeTables });
+  } catch (error) {
+    console.error('Error retrieving time tables by collector ID:', error);
+    return res.status(500).json({ message: 'Internal server error' });
+  }
 };
+
 
 // Get time tables by route ID
 export const getTimeTablesByRouteId = async (req, res) => {
